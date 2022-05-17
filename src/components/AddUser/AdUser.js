@@ -6,7 +6,8 @@ const AddUser = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const user = { email, password };
+    const name = event.target.name.value;
+    const user = {name, email, password };
 
     //send data 
     fetch('http://localhost:5000/user', {
@@ -26,10 +27,15 @@ const AddUser = () => {
 
   return (
     <div className='container'>
+    
       <Form className='w-50 m-auto mt-5' onSubmit={handelAddUser}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Your Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter your name" name='name' />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" name='email' />
+          <Form.Control type="email" placeholder="Enter your email" name='email' />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
